@@ -1,0 +1,41 @@
+.form {
+    width: 100%;
+    border: 1px solid black;
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.title {
+    width: 60%;
+    word-wrap: break-word;
+}
+
+.btn {
+    display: flex;
+    gap: 10px;
+}
+
+.detailBtn {
+    width: 100px;
+    height: 34px;
+    cursor: pointer;
+    background-color: #00BCD4;
+    color: white;
+}
+.detailBtn:active{
+    background-color: #006f7e;
+}
+
+.removeBtn {
+    width: 100px;
+    height: 34px;
+    cursor: pointer;
+    background-color: #D9534F;
+    color: white;
+}
+.removeBtn:active {
+    background-color: #a91d18;
+}
