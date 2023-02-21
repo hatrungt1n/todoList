@@ -5,7 +5,8 @@
 .App {
   padding: 0;
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   display: flex;
 }
 
@@ -21,5 +22,5 @@ h1 {
 
 .todoList {
   width: 60%;
-  padding: 0 15px;
+  padding: 0 15px 15px 15px;
 }

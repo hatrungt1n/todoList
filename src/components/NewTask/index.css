@@ -32,7 +32,7 @@
     height: 34px;
 }
 
-.addBtn {
+.addBtn, .updateBtn {
     width: 100%;
     height: 34px;
     margin-top: 40px;
