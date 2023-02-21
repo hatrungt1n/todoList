@@ -27,6 +27,7 @@
     height: 34px;
     cursor: pointer;
     background-color: #00BCD4;
+    border-radius: 5px;
     color: white;
 }
 .detailBtn:active{
@@ -38,6 +39,7 @@
     height: 34px;
     cursor: pointer;
     background-color: #D9534F;
+    border-radius: 5px;
     color: white;
 }
 .removeBtn:active {

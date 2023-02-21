@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./index.css";
+import { addNewDoc } from "../../firebase/services";
 
 const NewTask = () => {
   const newDate = new Date();
@@ -13,6 +14,14 @@ const NewTask = () => {
   const [taskDes, setTaskDes] = useState("");
   const [date, setDate] = useState(newDateForat);
   const [priority, setPriority] = useState("Normal");
+
+  const addDoc = function (e) {
+    addNewDoc(e, taskTitle, taskDes, date, priority);
+    setTaskTitle("");
+    setTaskDes("");
+    setDate(newDateForat);
+    setPriority("Normal");
+  };
 
   return (
     <div>
@@ -52,7 +61,11 @@ const NewTask = () => {
 
         <div className="priority">
           <h2>Priority</h2>
-          <select className="prio" id="prio" onChange={e => setPriority(e.target.value)}>
+          <select
+            className="prio"
+            id="prio"
+            onChange={(e) => setPriority(e.target.value)}
+          >
             <option value="Low">Low</option>
             <option value={priority} selected>
               Normal
@@ -62,7 +75,9 @@ const NewTask = () => {
         </div>
       </div>
 
-      <button className="addBtn">Add</button>
+      <button className="addBtn" onClick={(e) => addDoc(e)}>
+        Add
+      </button>
     </div>
   );
 };
