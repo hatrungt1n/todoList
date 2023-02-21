@@ -12,6 +12,7 @@ const NewTask = () => {
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDes, setTaskDes] = useState("");
   const [date, setDate] = useState(newDateForat);
+  const [priority, setPriority] = useState("Normal");
 
   return (
     <div>
@@ -51,9 +52,9 @@ const NewTask = () => {
 
         <div className="priority">
           <h2>Priority</h2>
-          <select className="prio" id="prio" onChange={e => console.log(e.target.value)}>
+          <select className="prio" id="prio" onChange={e => setPriority(e.target.value)}>
             <option value="Low">Low</option>
-            <option value="Normal" selected>
+            <option value={priority} selected>
               Normal
             </option>
             <option value="High">High</option>
