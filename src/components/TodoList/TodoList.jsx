@@ -52,9 +52,9 @@ const TodoList = () => {
         <ul>
           {state.query === ""
             ? todos
-              ? todos.map((todo, id) => {
+              ? todos.map((todo) => {
                   return (
-                    <div key={id}>
+                    <div key={todo.id}>
                       <TodoModal
                         id={todo.id}
                         title={todo.title}
