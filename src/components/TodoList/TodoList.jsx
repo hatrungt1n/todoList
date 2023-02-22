@@ -66,9 +66,9 @@ const TodoList = () => {
                   );
                 })
               : null
-            : state.list.map((todo, id) => {
+            : state.list.map((todo) => {
                 return (
-                  <div key={id}>
+                  <div key={todo.id}>
                     <TodoModal
                       id={todo.id}
                       title={todo.title}
