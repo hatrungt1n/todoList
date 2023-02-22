@@ -8,9 +8,7 @@ import {
 } from "firebase/firestore";
 import { db } from "./config";
 
-export const addNewDoc = async (e, taskTitle, taskDes, date, priority) => {
-  e.preventDefault();
-
+export const addNewDoc = async (taskTitle, taskDes, date, priority) => {
   try {
     const docRef = await addDoc(collection(db, "tasks"), {
       title: taskTitle,

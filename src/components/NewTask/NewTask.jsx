@@ -15,8 +15,12 @@ const NewTask = () => {
   const [date, setDate] = useState(newDateForat);
   const [priority, setPriority] = useState("Normal");
 
-  const addDoc = function (e) {
-    addNewDoc(e, taskTitle, taskDes, date, priority);
+  const addDoc = function () {
+    if (taskTitle.trim().length !== 0) {
+      addNewDoc(taskTitle, taskDes, date, priority);
+    } else {
+      alert("The task title is required!");
+    }
     setTaskTitle("");
     setTaskDes("");
     setDate(newDateForat);
@@ -76,7 +80,7 @@ const NewTask = () => {
         </div>
       </div>
 
-      <button className="addBtn" onClick={(e) => addDoc(e)}>
+      <button className="addBtn" onClick={(e) => addDoc()}>
         Add
       </button>
     </div>
