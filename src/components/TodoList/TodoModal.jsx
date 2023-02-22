@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { deleteCurrentDoc, updateCurrentDoc } from "../../firebase/services";
 
-const TodoModal = ({ id, title, description, date, priority }) => {
+const TodoModal = ({
+  id,
+  title,
+  description,
+  date,
+  priority,
+  check,
+  setCheck,
+}) => {
   const [show, setShow] = useState(false);
 
   const [newTaskTitle, setNewTaskTitle] = useState(title);
@@ -9,12 +17,27 @@ const TodoModal = ({ id, title, description, date, priority }) => {
   const [newDate, setNewDate] = useState(date);
   const [newPriority, setNewPriority] = useState(priority);
 
+  const [valueCheck, setValueCheck] = useState(true);
+
   const updateDoc = () => {
     if (newTaskTitle.trim().length !== 0) {
       updateCurrentDoc(id, newTaskTitle, newTaskDes, newDate, newPriority);
     } else {
       alert("The task title is required!");
     }
+  };
+
+  const findCheck = () => {
+    const arrCheckUpdate = [];
+    // eslint-disable-next-line
+    check.map((item) => {
+      if (id === item.id) {
+        item.checked = valueCheck;
+        setValueCheck(!valueCheck);
+      }
+      arrCheckUpdate.push(item);
+      setCheck(arrCheckUpdate);
+    });
   };
 
   useEffect(() => {
@@ -27,8 +50,8 @@ const TodoModal = ({ id, title, description, date, priority }) => {
   return (
     <div className="formModal">
       <div className="form">
-        <input type="checkbox" id={id} onChange={console.log(id)} />
-        <label for={id} className="title">
+        <input type="checkbox" id={id} onChange={() => findCheck()} />
+        <label htmlFor={id} className="title">
           {title}
         </label>
 

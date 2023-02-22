@@ -4,6 +4,7 @@ import {
   addDoc,
   updateDoc,
   deleteDoc,
+  writeBatch,
   serverTimestamp,
 } from "firebase/firestore";
 import { db } from "./config";
@@ -50,4 +51,17 @@ export const deleteCurrentDoc = (id) => {
   } catch (e) {
     console.error("Error deleting document: ", e);
   }
+};
+
+export const deleteCheckDoc = async (set) => {
+  const batch = writeBatch(db);
+  // eslint-disable-next-line
+  set.map((data) => {
+    if (data.checked === true) {
+      batch.delete(doc(db, "tasks", data.id));
+    }
+  });
+
+  // Commit the batch
+  await batch.commit();
 };

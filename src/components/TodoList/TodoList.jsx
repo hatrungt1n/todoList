@@ -3,6 +3,7 @@ import "./index.css";
 import TodoModal from "./TodoModal";
 import { collection, orderBy, query, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase/config";
+import { deleteCheckDoc } from "../../firebase/services";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -11,6 +12,8 @@ const TodoList = () => {
     query: "",
     list: [],
   });
+
+  const [check, setCheck] = useState([]);
 
   const handleChange = (e) => {
     const results = todos.filter((todo) => {
@@ -26,11 +29,20 @@ const TodoList = () => {
   const fetchPost = () => {
     const q = query(collection(db, "tasks"), orderBy("date", "asc"));
     onSnapshot(q, (querySnapshot) => {
+      const arrCheck = [];
       const newData = querySnapshot.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
       }));
       setTodos(newData);
+      // eslint-disable-next-line
+      newData.map((data) => {
+        arrCheck.push({
+          id: data.id,
+          checked: false,
+        });
+      });
+      setCheck(arrCheck);
     });
   };
 
@@ -61,6 +73,8 @@ const TodoList = () => {
                         description={todo.description}
                         date={todo.date}
                         priority={todo.priority}
+                        check={check}
+                        setCheck={setCheck}
                       />
                     </div>
                   );
@@ -82,14 +96,23 @@ const TodoList = () => {
         </ul>
       </div>
 
-      <div className="bulkAction">
-        <div>Bulk action</div>
+      {check.find((id) => {
+        return id.checked === true;
+      }) ? (
+        <div className="bulkAction">
+          <div>Bulk action</div>
 
-        <div className="btn">
-          <button className="doneBtn">Done</button>
-          <button className="removeSelectedBtn">Remove</button>
+          <div className="btn">
+            <button className="doneBtn">Done</button>
+            <button
+              className="removeSelectedBtn"
+              onClick={(e) => deleteCheckDoc(check)}
+            >
+              Remove
+            </button>
+          </div>
         </div>
-      </div>
+      ) : null}
     </div>
   );
 };
