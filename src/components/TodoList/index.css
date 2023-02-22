@@ -28,6 +28,7 @@
     word-wrap: break-word;
     margin-right: auto;
     margin-left: 10px;
+    cursor: pointer;
 }
 
 .btn {
