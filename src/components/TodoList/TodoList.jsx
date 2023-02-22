@@ -1,32 +1,27 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
 import TodoModal from "./TodoModal";
-import {
-  collection,
-  orderBy,
-  query,
-  onSnapshot,
-} from "firebase/firestore";
+import { collection, orderBy, query, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase/config";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
 
-  // const [state, setstate] = useState({
-  //   query: "",
-  //   list: [],
-  // });
+  const [state, setstate] = useState({
+    query: "",
+    list: [],
+  });
 
-  // const handleChange = (e) => {
-  //   const results = todos.filter((todo) => {
-  //     if (e.target.value === "") return todos.title;
-  //     return todo.toLowerCase().includes(e.target.value.toLowerCase());
-  //   });
-  //   setstate({
-  //     query: e.target.value,
-  //     list: results,
-  //   });
-  // };
+  const handleChange = (e) => {
+    const results = todos.filter((todo) => {
+      if (e.target.value === "") return todos.title;
+      return todo.title.toLowerCase().includes(e.target.value.toLowerCase());
+    });
+    setstate({
+      query: e.target.value,
+      list: results,
+    });
+  };
 
   const fetchPost = () => {
     const q = query(collection(db, "tasks"), orderBy("date", "desc"));
@@ -52,30 +47,39 @@ const TodoList = () => {
           id="searchInput"
           type="text"
           placeholder="Search ..."
-          // onChange={(e) => handleChange(e)}
+          onChange={(e) => handleChange(e)}
         />
-        {/* <ul>
-        {state.query === ""
-          ? ""
-          : state.list.map((todo) => {
-              return <li key={todo.title}>{todo.title}</li>;
-            })}
-      </ul> */}
-        {todos
-          ? todos.map((todo, id) => {
-              return (
-                <div key={id}>
-                  <TodoModal
-                    id={todo.id}
-                    title={todo.title}
-                    description={todo.description}
-                    date={todo.date}
-                    priority={todo.priority}
-                  />
-                </div>
-              );
-            })
-          : null}
+        <ul>
+          {state.query === ""
+            ? todos
+              ? todos.map((todo, id) => {
+                  return (
+                    <div key={id}>
+                      <TodoModal
+                        id={todo.id}
+                        title={todo.title}
+                        description={todo.description}
+                        date={todo.date}
+                        priority={todo.priority}
+                      />
+                    </div>
+                  );
+                })
+              : null
+            : state.list.map((todo, id) => {
+                return (
+                  <div key={id}>
+                    <TodoModal
+                      id={todo.id}
+                      title={todo.title}
+                      description={todo.description}
+                      date={todo.date}
+                      priority={todo.priority}
+                    />
+                  </div>
+                );
+              })}
+        </ul>
       </div>
 
       <div className="bulkAction">
