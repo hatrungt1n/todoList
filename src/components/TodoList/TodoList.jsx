@@ -24,7 +24,7 @@ const TodoList = () => {
   };
 
   const fetchPost = () => {
-    const q = query(collection(db, "tasks"), orderBy("date", "desc"));
+    const q = query(collection(db, "tasks"), orderBy("date", "asc"));
     onSnapshot(q, (querySnapshot) => {
       const newData = querySnapshot.docs.map((doc) => ({
         ...doc.data(),
