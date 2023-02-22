@@ -9,6 +9,14 @@ const TodoModal = ({ id, title, description, date, priority }) => {
   const [newDate, setNewDate] = useState(date);
   const [newPriority, setNewPriority] = useState(priority);
 
+  const updateDoc = () => {
+    if (newTaskTitle.trim().length !== 0) {
+      updateCurrentDoc(id, newTaskTitle, newTaskDes, newDate, newPriority);
+    } else {
+      alert("The task title is required!");
+    }
+  };
+
   useEffect(() => {
     setNewTaskTitle(title);
     setNewTaskDes(description);
@@ -20,7 +28,9 @@ const TodoModal = ({ id, title, description, date, priority }) => {
     <div className="formModal">
       <div className="form">
         <input type="checkbox" id={id} onChange={console.log(id)} />
-        <label for={id} className="title">{title}</label>
+        <label for={id} className="title">
+          {title}
+        </label>
 
         <div className="btn">
           <button className="detailBtn" onClick={(e) => setShow(!show)}>
@@ -78,13 +88,7 @@ const TodoModal = ({ id, title, description, date, priority }) => {
           </div>
         </div>
 
-        <button
-          id={id}
-          className="updateBtn"
-          onClick={(e) =>
-            updateCurrentDoc(id, newTaskTitle, newTaskDes, newDate, newPriority)
-          }
-        >
+        <button id={id} className="updateBtn" onClick={(e) => updateDoc()}>
           Update
         </button>
       </div>
