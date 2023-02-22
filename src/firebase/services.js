@@ -11,6 +11,7 @@ import { db } from "./config";
 
 export const addNewDoc = async (taskTitle, taskDes, date, priority) => {
   try {
+    // eslint-disable-next-line
     const docRef = await addDoc(collection(db, "tasks"), {
       title: taskTitle,
       description: taskDes,
@@ -18,9 +19,9 @@ export const addNewDoc = async (taskTitle, taskDes, date, priority) => {
       priority: priority,
       timestamp: serverTimestamp(),
     });
-    console.log("Document written with ID: ", docRef.id);
+    // console.log("Document written with ID: ", docRef.id);
   } catch (e) {
-    console.error("Error adding document: ", e);
+    // console.error("Error adding document: ", e);
   }
 };
 
@@ -38,18 +39,18 @@ export const updateCurrentDoc = async (
       date: newDate,
       priority: newPriority,
     });
-    console.log("Document updated with ID: ", id);
+    // console.log("Document updated with ID: ", id);
   } catch (e) {
-    console.error("Error updating document: ", e);
+    // console.error("Error updating document: ", e);
   }
 };
 
 export const deleteCurrentDoc = (id) => {
   try {
     deleteDoc(doc(db, `tasks/${id}`));
-    console.log(`Document ${id} is deleted`);
+    // console.log(`Document ${id} is deleted`);
   } catch (e) {
-    console.error("Error deleting document: ", e);
+    // console.error("Error deleting document: ", e);
   }
 };
 
