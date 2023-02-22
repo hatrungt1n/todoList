@@ -1,3 +1,14 @@
+.right-cont {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.mainList {
+    padding: 0 15px;
+}
+
 .formModal {
     margin: 20px 0;
 }
@@ -13,8 +24,10 @@
 }
 
 .title {
-    width: 60%;
+    max-width: 50%;
     word-wrap: break-word;
+    margin-right: auto;
+    margin-left: 10px;
 }
 
 .btn {
@@ -22,25 +35,23 @@
     gap: 10px;
 }
 
-.detailBtn {
+.detailBtn, .removeBtn, .doneBtn, .removeSelectedBtn {
     width: 100px;
     height: 34px;
     cursor: pointer;
-    background-color: #00BCD4;
     border-radius: 5px;
     color: white;
+}
+
+.detailBtn {
+    background-color: #00BCD4;
 }
 .detailBtn:active{
     background-color: #006f7e;
 }
 
 .removeBtn {
-    width: 100px;
-    height: 34px;
-    cursor: pointer;
     background-color: #D9534F;
-    border-radius: 5px;
-    color: white;
 }
 .removeBtn:active {
     background-color: #a91d18;
@@ -54,3 +65,38 @@
 .detailHide {
     display: none;
 }
+
+.bulkAction {
+    display: flex;
+    padding: 20px 20px; 
+    margin-top: auto;
+    background-color: #E0E0E0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.doneBtn {
+    background-color: #2196F3;
+}
+.doneBtn:active {
+    background-color: #0a65ae;
+}
+
+.removeSelectedBtn {
+    background-color: #D9534F;
+}
+.removeSelectedBtn:active {
+    background-color: #c61e18;
+}
+
+@media only screen and (max-width: 800px) {
+    .btn {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .bulkAction {
+        width: 100%;
+    }
+  }

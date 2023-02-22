@@ -1,27 +1,12 @@
 import {
   collection,
   doc,
-  orderBy,
-  getDocs,
   addDoc,
   updateDoc,
   deleteDoc,
   serverTimestamp,
-  query,
 } from "firebase/firestore";
 import { db } from "./config";
-
-export const fetchPost = async () => {
-  return await getDocs(
-    query(collection(db, "tasks"), orderBy("timestamp", "desc"))
-  ).then((querySnapshot) => {
-    const newData = querySnapshot.docs.map((doc) => ({
-      ...doc.data(),
-      id: doc.id,
-    }));
-    return newData;
-  });
-};
 
 export const addNewDoc = async (e, taskTitle, taskDes, date, priority) => {
   e.preventDefault();

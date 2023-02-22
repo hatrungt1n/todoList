@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA5BZbWsTzRTZY2tD6zM5OnTZmm_1pmIrA",
-  authDomain: "todolist-b353f.firebaseapp.com",
-  projectId: "todolist-b353f",
-  storageBucket: "todolist-b353f.appspot.com",
-  messagingSenderId: "189738767771",
-  appId: "1:189738767771:web:cce636505752f74f1afd3e",
-  measurementId: "G-R5GH91HBTW"
+  apiKey: "AIzaSyCQBsLvSV3eBeXJZvgwycL6oSs5JxiTStI",
+  authDomain: "todolist-43d6f.firebaseapp.com",
+  projectId: "todolist-43d6f",
+  storageBucket: "todolist-43d6f.appspot.com",
+  messagingSenderId: "961296611512",
+  appId: "1:961296611512:web:0dc2376e0f8db474535c4d",
+  measurementId: "G-6ZM8B01PHH"
 };
 
 // Initialize Firebase

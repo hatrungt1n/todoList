@@ -19,6 +19,7 @@ const TodoModal = ({ id, title, description, date, priority }) => {
   return (
     <div className="formModal">
       <div className="form">
+        <input type="checkbox" id={id} onClick={(e) => console.log(id)} />
         <div className="title">{title}</div>
 
         <div className="btn">

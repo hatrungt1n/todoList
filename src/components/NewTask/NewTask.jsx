@@ -31,6 +31,7 @@ const NewTask = () => {
         className="input"
         id="newTaskInput"
         type="text"
+        required
         placeholder="Add new task ..."
         value={taskTitle}
         onChange={(e) => setTaskTitle(e.target.value)}

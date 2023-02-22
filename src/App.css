@@ -8,6 +8,7 @@
   min-height: 100vh;
   height: 100%;
   display: flex;
+  background-color: lightblue;
 }
 
 h1 {
@@ -22,5 +23,28 @@ h1 {
 
 .todoList {
   width: 60%;
-  padding: 0 15px 15px 15px;
+}
+
+@media only screen and (max-width: 800px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .newTask {
+    width: 100%;
+    border: 0;
+    padding: 0 15px;
+  }
+  
+  .todoList {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+  h2 {
+    font-size: 15px;
+  }
 }
